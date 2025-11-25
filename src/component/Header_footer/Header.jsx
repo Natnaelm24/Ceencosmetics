@@ -152,7 +152,7 @@ export default function Header() {
           : 'bg-[#ffffff]/10 backdrop-blur-lg shadow-xl py-5'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-5">
+      <div className="max-w-7xl mx-auto px-1">
         <div className="flex items-center justify-between h-15">
 
           {/* Logo */}
@@ -165,7 +165,7 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-16">
+          <nav className="hidden lg:flex items-center gap-18">
             {navLinks.map((link) => (
               <Link
                 key={link.name}

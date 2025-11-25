@@ -94,7 +94,7 @@
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#855d14] to-[#3b3626]">
             Choose Us?
           </span>
-        </h2>c
+        </h2>
         <p className="text-center text-gray-700 max-w-2xl mx-auto mb-16">
           We deliver innovative solutions backed by modern technology and dedicated support.
         </p>
@@ -114,7 +114,6 @@
                   className="w-12 h-12 object-contain"
                 />
               </div>
-
               {/* Text */}
               <h3 className="text-xl font-semibold text-[#855d14] mb-2">{item.title}</h3>
               <p className="text-gray-700 text-sm leading-relaxed">{item.desc}</p>
@@ -125,5 +124,4 @@
     </section>
   );
 }
-
 export default WhyChooseUs;

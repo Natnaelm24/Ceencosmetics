@@ -34,7 +34,7 @@ const ProductSection = () => {
 
         {/* Section Header */}
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#855d14] to-[#e5e2d7]">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#855d14] to-[#2c281a]">
             Featured Beauty Products
           </span>
         </h2>
@@ -54,7 +54,7 @@ const ProductSection = () => {
               <div className="p-6 text-center">
                 <h3 className="text-lg font-semibold text-[#855d14]">{product.name}</h3>
                 <p className="mt-2 text-[#855d14] font-bold">${product.price}</p>
-                <button className="mt-4 px-6 py-3 bg-gradient-to-r from-[#855d14] to-[#e5e2d7] text-white rounded-full font-semibold hover:scale-105 transition-transform">
+                <button className="mt-4 px-6 py-3 bg-[#ffffff] text-[#855d14] border-2 border-[#855d14] rounded-full font-semibold hover:scale-105 transition-transform">
                   Add to Cart
                 </button>
               </div>

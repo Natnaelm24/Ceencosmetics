@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import HeroImg from "../../../assets/Image/Hero.jpg";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   const [visible, setVisible] = useState(false);
@@ -29,15 +30,23 @@ const Hero = () => {
           Beauty that <span className="text-[#855d14]">Shines</span>
         </h1>
         <p className="text-white text-lg md:text-xl max-w-lg">
-          Experience the glow of naturally radiant, healthy skin with CEEN products.
+          Experience the glow of naturally radiant, healthy skin with CEEN
+          products.
         </p>
         <div className="flex space-x-4 mt-4">
-          <button className="px-6 py-3 bg-[#855d14] text-white rounded-lg shadow-lg hover:bg-[#e5e2d7] hover:text-[#855d14] transition-transform transform hover:scale-105">
+          <Link
+            to="/product"
+            className="px-6 py-3 bg-[#855d14] text-white rounded-lg shadow-lg hover:bg-[#e5e2d7] hover:text-[#855d14] transition-transform transform hover:scale-105 inline-block"
+          >
             Shop Now
-          </button>
-          <button className="px-6 py-3 border-2 border-white text-white rounded-lg hover:bg-white hover:text-[#855d14] transition-transform transform hover:scale-105">
+          </Link>
+
+          <Link
+            to="/about"
+            className="px-6 py-3 border-2 border-white text-white rounded-lg hover:bg-white hover:text-[#855d14] transition-transform transform hover:scale-105 inline-block"
+          >
             Learn More
-          </button>
+          </Link>
         </div>
       </div>
 

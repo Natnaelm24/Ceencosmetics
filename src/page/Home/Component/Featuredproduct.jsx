@@ -184,7 +184,7 @@ export default function CategoryShowcase() {
                 </div>
 
                 {/* Floating Gold Accent */}
-                <div className="absolute top-4 right-4 w-12 h-12 bg-gradient-to-br from-[#b48a2c] to-[#d4af37] rounded-full opacity-0 group-hover:opacity-100 transition-all duration-700 blur-xl"></div>
+                {/* <div className="absolute top-4 right-4 w-12 h-12 bg-gradient-to-br from-[#b48a2c] to-[#d4af37] rounded-full opacity-0 group-hover:opacity-100 transition-all duration-700 blur-xl"></div> */}
               </div>
             </div>
           ))}

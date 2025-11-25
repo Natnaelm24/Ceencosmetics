@@ -10,7 +10,6 @@ function Home() {
   return (
     <div>
        <HeroSection />
-       <FeaturedProduct />
        <AboutUs />
        <ProductSection />
        <WhychooseUs />
