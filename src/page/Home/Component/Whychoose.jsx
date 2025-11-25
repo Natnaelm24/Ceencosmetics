@@ -59,9 +59,8 @@
 //       </div>
 //     </section>
 //   );
-// }
 
-export default function WhyChooseUs() {
+ function WhyChooseUs() {
   const features = [
     {
       img: "/images/security.jpg",
@@ -127,3 +126,4 @@ export default function WhyChooseUs() {
   );
 }
 
+export default WhyChooseUs;
