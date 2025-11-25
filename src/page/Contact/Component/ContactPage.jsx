@@ -5,7 +5,7 @@ import { Heart, Send } from 'lucide-react';
 
 const ContactPage = () => {
   return (
-    <div className="min-h-screen bg-[#e5e2d7] py-20 px-6">
+    <div className="min-h-screen bg-[#f1f0ec] py-20 px-6">
       <div className="max-w-6xl mx-auto">
 
         {/* Header */}
@@ -36,13 +36,6 @@ const ContactPage = () => {
             </h2>
             <ContactInfo />
           </div>
-        </div>
-
-        {/* Footer Note */}
-        <div className="text-center mt-20">
-          <p className="text-gray-700 text-lg italic">
-            Expect a reply within 24 hours
-          </p>
         </div>
       </div>
     </div>

@@ -2,9 +2,10 @@
 import React from 'react';
 import { PlayCircle, Droplets, Sparkles, Sun, Moon } from 'lucide-react';
 
+
 export default function HowToUseWithImage({ 
   productName = "Radiance Glow Serum",
-  imageSrc = "/images/products/radiance-serum-bottle.jpg"
+  imageSrc = "../src/assets/Image/Image5.jpg"
 }) {
   const steps = [
     {
@@ -68,7 +69,7 @@ export default function HowToUseWithImage({
             </div>
 
             {/* CTA Button */}
-            <button className="mt-12 flex items-center gap-3 bg-[#855d14] text-white px-8 py-4 rounded-full font-medium hover:bg-[#6e4b10] transition-all shadow-md">
+            <button className="mt-12 flex items-center gap-3 bg-[#ffffff] text-[#855d14] border-2 border-[#855d14] px-8 py-4 rounded-full font-medium hover:bg-[#6e4b10] hover:text-white transition-all shadow-md">
               <PlayCircle className="w-7 h-7" />
               Watch How It Works
             </button>
