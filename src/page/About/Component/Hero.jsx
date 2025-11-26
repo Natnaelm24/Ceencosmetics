@@ -21,15 +21,8 @@ export default function AboutHeroMinimal() {
       {/* Content */}
       <div className="relative z-10 text-center px-6">
         <h1 className="text-4xl md:text-5xl font-serif text-[#855d14] mb-4 tracking-tight">
-          About
+          About Ceen
         </h1>
-
-        {/* Breadcrumb */}
-        <div className="flex items-center justify-center gap-3 text-lg md:text-xl font-light text-gray-700">
-          <span className="text-[#855d14]">Home</span>
-          <span className="text-gray-400">—</span>
-          <span className="text-[#855d14] font-medium">About</span>
-        </div>
       </div>
 
       {/* Decorative Warm Glows */}

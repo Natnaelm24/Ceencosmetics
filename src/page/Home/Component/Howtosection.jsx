@@ -69,10 +69,10 @@ export default function HowToUseWithImage({
             </div>
 
             {/* CTA Button */}
-            <button className="mt-12 flex items-center gap-3 bg-[#ffffff] text-[#855d14] border-2 border-[#855d14] px-8 py-4 rounded-full font-medium hover:bg-[#6e4b10] hover:text-white transition-all shadow-md">
+            {/* <button className="mt-12 flex items-center gap-3 bg-[#ffffff] text-[#855d14] border-2 border-[#855d14] px-8 py-4 rounded-full font-medium hover:bg-[#6e4b10] hover:text-white transition-all shadow-md">
               <PlayCircle className="w-7 h-7" />
               Watch How It Works
-            </button>
+            </button> */}
           </div>
 
           {/* RIGHT SIDE — Product Image */}

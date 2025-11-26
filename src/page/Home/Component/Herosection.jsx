@@ -23,9 +23,6 @@ const Hero = () => {
           visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}
       >
-        <h2 className="text-[#e5e2d7] font-bold uppercase tracking-widest">
-          New Collection
-        </h2>
         <h1 className="text-5xl md:text-6xl font-serif font-bold text-white">
           Beauty that <span className="text-[#855d14]">Shines</span>
         </h1>

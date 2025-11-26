@@ -60,68 +60,90 @@
 //     </section>
 //   );
 
- function WhyChooseUs() {
+
+
+
+
+
+
+
+import React from "react";
+import {
+  Sparkles,
+  Droplets,
+  Leaf,
+  Shield,
+  CheckCircle2,
+  HeartHandshake,
+} from "lucide-react";
+
+function WhyChooseUs() {
   const features = [
     {
-      img: "/images/security.jpg",
-      title: "Trusted & Secure",
-      desc: "We prioritize security to ensure your data and experience are fully protected.",
+      icon: Sparkles,
+      title: "Glow-Enhancing Formulas",
+      desc: "Clinically proven actives that deliver visible radiance and smoother skin.",
     },
     {
-      img: "/images/performance.jpg",
-      title: "Fast Performance",
-      desc: "Our optimized systems deliver fast loading times and smooth navigation.",
+      icon: Droplets,
+      title: "Deeply Hydrating",
+      desc: "Multi-layer hydration that plumps, nourishes and locks in moisture all day.",
     },
     {
-      img: "/images/user-friendly.jpg",
-      title: "User Friendly",
-      desc: "A simple and clean interface that anyone can use with ease.",
+      icon: Leaf,
+      title: "Clean & Natural",
+      desc: "100% cruelty-free, vegan, and made with responsibly sourced botanical actives.",
     },
     {
-      img: "/images/support.jpg",
-      title: "Quality Support",
-      desc: "Our support team is always here to help you with any issue.",
+      icon: Shield,
+      title: "Dermatologist Approved",
+      desc: "Gentle on sensitive skin. Fragrance-free options available.",
     },
   ];
 
   return (
-    <section className="py-24 bg-[#ffffff]">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-24 bg-gradient-to-b from-white via-[#e5e2d7]/20 to-white">
+      <div className="max-w-7xl mx-auto px-6 text-center">
 
-        {/* Heading */}
-        <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-4">
-          Why{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#855d14] to-[#3b3626]">
-            Choose Us?
-          </span>
+        {/* Elegant Golden Heading */}
+        <h2 className="text-5xl md:text-6xl font-light text-[#855d14] mb-6">
+          Why Women{" "}
+          <span className="font-serif italic text-[#855d14]">Love Us</span>
         </h2>
-        <p className="text-center text-gray-700 max-w-2xl mx-auto mb-16">
-          We deliver innovative solutions backed by modern technology and dedicated support.
+        <p className="text-lg text-gray-700 max-w-2xl mx-auto mb-16 leading-relaxed font-light">
+          Because your skin deserves the very best — science-backed luxury that feels like self-care.
         </p>
 
-        {/* Feature Cards */}
+        {/* Golden Feature Cards */}
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
-          {features.map((item, index) => (
-            <div
-              key={index}
-              className="bg-[#f9f7f5] rounded-3xl shadow-lg hover:shadow-2xl transition-transform transform hover:-translate-y-2 p-6 flex flex-col items-center text-center"
-            >
-              {/* Image in circular background */}
-              <div className="w-24 h-24 flex items-center justify-center rounded-full bg-gradient-to-br from-[#855d14]/20 to-[#e5e2d7]/20 mb-6">
-                <img
-                  src={item.img}
-                  alt={item.title}
-                  className="w-12 h-12 object-contain"
-                />
+          {features.map((item, index) => {
+            const Icon = item.icon;
+            return (
+              <div
+                key={index}
+                className="group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 border border-[#e5e2d7]"
+              >
+                {/* Golden Icon with Warm Glow */}
+                <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-[#855d14] to-[#b48a2c] p-4 shadow-xl ring-8 ring-white/70 group-hover:ring-[#e5e2d7]/50 transition-all duration-500">
+                  <Icon className="w-full h-full text-white" strokeWidth={2.5} />
+                </div>
+
+                <h3 className="text-xl font-medium text-[#855d14] mb-3 tracking-wide">
+                  {item.title}
+                </h3>
+                <p className="text-gray-700 text-sm leading-relaxed">
+                  {item.desc}
+                </p>
+
+                {/* Subtle Golden Heart on Hover */}
+                {/* <HeartHandshake className="absolute -top-4 -right-4 w-12 h-12 text-[#855d14]/15 opacity-0 group-hover:opacity-100 transition-all duration-700" /> */}
               </div>
-              {/* Text */}
-              <h3 className="text-xl font-semibold text-[#855d14] mb-2">{item.title}</h3>
-              <p className="text-gray-700 text-sm leading-relaxed">{item.desc}</p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
   );
 }
+
 export default WhyChooseUs;

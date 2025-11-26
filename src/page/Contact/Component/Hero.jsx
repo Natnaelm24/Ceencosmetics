@@ -23,13 +23,6 @@ export default function AboutHeroMinimal() {
         <h1 className="text-4xl md:text-5xl font-serif text-[#855d14] mb-4 tracking-tight">
           Contact
         </h1>
-
-        {/* Breadcrumb */}
-        <div className="flex items-center justify-center gap-3 text-lg md:text-xl font-light text-gray-700">
-          <span className="text-[#855d14]">Home</span>
-          <span className="text-gray-400">—</span>
-          <span className="text-[#855d14] font-medium">Contact</span>
-        </div>
       </div>
 
       {/* Decorative Warm Glows */}
