@@ -5,7 +5,7 @@ const ProductTabs = ({ product }) => {
   const [activeTab, setActiveTab] = useState("description");
 
   const tabs = [
-    { id: "description", label: "Description" },
+    { id: "description rdddddddddddr", label: "Description" },
     { id: "ingredients", label: "Key Ingredients" },
     { id: "reviews", label: "Reviews (24)" },
   ];

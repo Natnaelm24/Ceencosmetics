@@ -6,7 +6,8 @@ import { CartProvider } from "./component/ProductCard/CartContext";
 
 import Home from "../src/page/Home/Home";
 import About from "../src/page/About/About";
-import Product from "../src/page/ProductDetail/ProductDetailPage.jsx";
+import Product from "./page/ProductDetail/Allproduct.jsx";
+import ProductDetailPage from "./page/ProductDetail/Component/ProductDetailPage.jsx";
 import ShopNowPage from "./page/Shopnow/Shopnow";
 import Testimonial from "../src/page/Testimonial/Testimonial";
 import ContactUs from "../src/page/Contact/ContactUs.jsx";
@@ -19,6 +20,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/product" element={<Product />} />
+        <Route path="/product/:id" element={<ProductDetailPage />} />
         <Route path="/shopnow" element={<ShopNowPage />} />
         <Route path="/testimonial" element={<Testimonial />} />
         <Route path="/contact" element={<ContactUs />} />
