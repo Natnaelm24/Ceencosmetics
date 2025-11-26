@@ -1,11 +1,11 @@
 // src/components/HowToUseWithImage.jsx
 import React from 'react';
 import { PlayCircle, Droplets, Sparkles, Sun, Moon } from 'lucide-react';
-
+import imageSrc from "../../../assets/Image/Image5.jpg"
 
 export default function HowToUseWithImage({ 
   productName = "Radiance Glow Serum",
-  imageSrc = "../src/assets/Image/Image5.jpg"
+  // imageSrc = "../src/assets/Image/Image5.jpg"
 }) {
   const steps = [
     {
