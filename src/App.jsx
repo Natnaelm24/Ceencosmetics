@@ -11,6 +11,8 @@ import ProductDetailPage from "./page/ProductDetail/Component/ProductDetailPage"
 import ING from "./page/Ingridients/Ingridients";
 import Testimonial from "./page/Testimonial/Testimonial";
 import ContactUs from "./page/Contact/ContactUs";
+import SkinGuides from "./page/SkinGuides/SkinGuides";
+import GuideDetail from "./page/SkinGuides/Component/GuideDetail";
 
 // Skin Concern Pages
 import Dryness from "./page/SkinCareguides/Dryness/Dryness";
@@ -33,6 +35,8 @@ function App() {
         <Route path="/Ceen-ingredient" element={<ING />} />
         <Route path="/testimonial" element={<Testimonial />} />
         <Route path="/contact" element={<ContactUs />} />
+        <Route path="/skincare-guides" element={<SkinGuides  />} />
+        <Route path="/skincare-guides/:slug" element={<GuideDetail />} />
 
         {/* Skin Concerns */}
         <Route path="/:slug" element={<Dryness />} />

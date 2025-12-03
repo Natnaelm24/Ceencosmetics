@@ -107,8 +107,8 @@ function WhyChooseUs() {
 
         {/* Elegant Golden Heading */}
         <h2 className="text-5xl md:text-6xl font-light text-[#855d14] mb-6">
-          Why Women{" "}
-          <span className="font-serif italic text-[#855d14]">Love Us</span>
+          Why Everyone{" "}
+          <span className="font-serif italic text-[#855d14]">Loves CEEN</span>
         </h2>
         <p className="text-lg text-gray-700 max-w-2xl mx-auto mb-16 leading-relaxed font-light">
           Because your skin deserves the very best — science-backed luxury that feels like self-care.
