@@ -13,11 +13,7 @@ import Testimonial from "./page/Testimonial/Testimonial";
 import ContactUs from "./page/Contact/ContactUs";
 
 // Skin Concern Pages
-import Dryness from "./page/SkinCareguides/Dryness/Dryness";
-import SkinAging from "./page/SkinCareguides/SkinAging/SkinAging";
-import Dullness from "./page/SkinCareguides/Dullness/Dullness";
-import UnevenSkinTone from "./page/SkinCareguides/Unevenskintone/Unevenskintone";
-import UVProtection from "./page/SkinCareguides/Uvprotection/Uvprotection";
+import SkinConcernPage from "./page/SkinCareGuides/SkinConcernPage";
 
 function App() {
   return (
@@ -35,11 +31,7 @@ function App() {
         <Route path="/contact" element={<ContactUs />} />
 
         {/* Skin Concerns */}
-        <Route path="/:slug" element={<Dryness />} />
-        <Route path="/:slug" element={<SkinAging />} />
-        <Route path="/:slug" element={<Dullness />} />
-        <Route path="/:slug" element={<UnevenSkinTone />} />
-        <Route path="/:slug" element={<UVProtection />} />
+        <Route path="/:slug" element={<SkinConcernPage />} />
       </Routes>
 
       <FooterTop />

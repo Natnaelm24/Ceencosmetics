@@ -1,52 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
-function Grid({ selectedTab, onSelectTab }) {
-  const [tabs, setTabs] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+function Grid({ selectedTab, ingredients, loading, onSelectTab }) {
+  const [expandedItems, setExpandedItems] = useState({});
 
-  const API_URL = import.meta.env.VITE_API_URL;
-
-  useEffect(() => {
-    const fetchIngredients = async () => {
-      if (!API_URL) {
-        setError("API URL is missing. Set VITE_API_URL in your .env file.");
-        setLoading(false);
-        return;
-      }
-
-      try {
-        const response = await fetch(`${API_URL}/ingeridents`);
-
-        if (!response.ok) throw new Error("Failed to fetch ingredients");
-
-        const data = await response.json();
-        setTabs(data);
-      } catch (err) {
-        console.error(err);
-        setError(err.message || "Something went wrong while fetching data.");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchIngredients();
-  }, [API_URL]);
+  const toggleExpanded = (itemId) => {
+    setExpandedItems((prev) => ({
+      ...prev,
+      [itemId]: !prev[itemId],
+    }));
+  };
 
   const items =
     selectedTab === "all"
-      ? tabs
-      : tabs.filter((tab) => tab.id === selectedTab);
+      ? ingredients
+      : ingredients.filter((item) => item.title === selectedTab);
 
   if (loading)
     return <p className="text-center py-20">Loading ingredients...</p>;
-
-  if (error)
-    return (
-      <p className="text-center py-20 text-red-500">
-        Error fetching ingredients: {error}
-      </p>
-    );
 
   return (
     <section className="py-20 lg:py-28 bg-gradient-to-b from-background to-muted/30">
@@ -65,7 +35,11 @@ function Grid({ selectedTab, onSelectTab }) {
             </div>
 
             <div className="grid md:grid-cols-2 gap-6">
-              {items.map((item) => (
+              {items.map((item) => {
+                const isExpanded = expandedItems[item.id];
+                const hasDetails = item.details && item.details.length > 0;
+                
+                return (
                 <div key={item.id} className="p-6">
                   {/* Title */}
                   <h3 className="text-2xl font-bold text-foreground mb-2">
@@ -87,17 +61,40 @@ function Grid({ selectedTab, onSelectTab }) {
                     {item.description}
                   </p>
 
-                  {/* Details */}
-                  {item.details?.map((d, index) => (
-                    <div key={index} className="mt-4">
-                      <h4 className="font-semibold">{d.Question}</h4>
-                      <p className="text-sm text-muted-foreground">
-                        {d.Answer}
-                      </p>
+                  {/* Read More Button - Only show when NOT expanded */}
+                  {hasDetails && !isExpanded && (
+                    <button
+                      onClick={() => toggleExpanded(item.id)}
+                      className="mt-4 text-primary font-medium hover:underline focus:outline-none transition-all"
+                    >
+                      Read More
+                    </button>
+                  )}
+
+                  {/* Details - Only show when expanded */}
+                  {hasDetails && isExpanded && (
+                    <div className="mt-4">
+                      {item.details.map((d, index) => (
+                        <div key={index} className="mt-4">
+                          <h4 className="font-semibold">{d.Question}</h4>
+                          <p className="text-sm text-muted-foreground">
+                            {d.Answer}
+                          </p>
+                        </div>
+                      ))}
+                      
+                      {/* Read Less Button - Below all details */}
+                      <button
+                        onClick={() => toggleExpanded(item.id)}
+                        className="mt-4 text-primary font-medium hover:underline focus:outline-none transition-all"
+                      >
+                        Read Less
+                      </button>
                     </div>
-                  ))}
+                  )}
                 </div>
-              ))}
+                );
+              })}
             </div>
           </div>
 
@@ -110,13 +107,13 @@ function Grid({ selectedTab, onSelectTab }) {
                 </h3>
 
                 <ul className="space-y-3">
-                  {tabs.map((tab) => (
+                  {ingredients.map((item) => (
                     <li
-                      key={tab.id}
+                      key={item.id}
                       className="text-primary font-medium hover:underline cursor-pointer"
-                      onClick={() => onSelectTab?.(tab.id)}
+                      onClick={() => onSelectTab?.(item.title)}
                     >
-                      {tab.title}
+                      {item.title}
                     </li>
                   ))}
                 </ul>

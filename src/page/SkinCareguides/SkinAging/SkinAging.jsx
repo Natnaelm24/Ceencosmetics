@@ -1,6 +1,7 @@
+
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import HeroCare from "../Hero.jsx";
-// import { useParams } from "react-router-dom";
 
 function SkinAging() {
   const {slug} = useParams();
@@ -10,7 +11,7 @@ function SkinAging() {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await fetch(`${API_URL}/:slug`);
+        const res = await fetch(`${API_URL}/skin-concerns`);
         if (!res.ok) throw new Error("Failed to fetch products");
 
         const data = await res.json();
@@ -22,7 +23,7 @@ function SkinAging() {
 
         setProduct(skinAgingProduct);
       } catch (err) {
-        console.error(err);
+        console.error("Error fetching skin aging product:", err);
       }
     };
 

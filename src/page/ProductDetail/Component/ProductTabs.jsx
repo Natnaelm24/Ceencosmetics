@@ -10,7 +10,7 @@ const ProductTabs = ({ productId }) => {
     const fetchProduct = async () => {
       setLoading(true);
       try {
-        const res = await fetch(`${import.meta.env.VITE_API_URL}/Product bu ID/${productId}`);
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/products/${productId}`);
         console.log("Fetch response:", res);
         if (!res.ok) {
           let errMsg = `HTTP error ${res.status}`;

@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import HeroCare from "../Hero.jsx";
 
@@ -20,7 +21,7 @@ function UnevenSkinTone() {
 
         setProduct(toneProduct);
       } catch (err) {
-        console.error(err);
+        console.error("Error fetching uneven skin tone product:", err);
       }
     };
 
