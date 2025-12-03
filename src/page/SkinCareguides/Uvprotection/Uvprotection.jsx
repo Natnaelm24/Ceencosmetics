@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import HeroCare from "../Hero.jsx";
 
@@ -18,7 +19,7 @@ function UVProtection() {
 
         setProduct(uvProduct);
       } catch (err) {
-        console.error(err);
+        console.error("Error fetching UV protection product:", err);
       }
     };
 

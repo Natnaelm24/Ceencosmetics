@@ -11,7 +11,7 @@ function HorizontalTabs({ tabs, selectedTab, setSelectedTab }) {
             onClick={() => setSelectedTab(tab.id)}
             className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 font-montserrat text-center col-span-2 ${
               selectedTab === tab.id
-                ? "bg-primary/90 text-[] shadow-md"
+                ? "bg-primary/90 text-black shadow-md"
                 : "text-primary/60 hover:bg-primary/10"
             }`}
           >

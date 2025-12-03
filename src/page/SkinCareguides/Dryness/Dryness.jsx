@@ -15,12 +15,12 @@ function Dryness() {
 
         // Find the product related to "Dryness & Dehydration"
         const drynessProduct = data.find(
-          (item) => item.slug === "dryness-dehydration"
+          (item) => item.slug === "dryness-and-dehydration"
         );
 
         setProduct(drynessProduct);
       } catch (err) {
-        console.error(err);
+        console.error("Error fetching dryness product:", err);
       }
     };
 

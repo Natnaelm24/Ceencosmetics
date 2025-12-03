@@ -20,7 +20,7 @@ function Dullness() {
 
         setProduct(dullnessProduct);
       } catch (err) {
-        console.error(err);
+        console.error("Error fetching dullness product:", err);
       }
     };
 

@@ -1,6 +1,7 @@
-// import React, { useState, useEffect } from "react";
-// import HeroCare from "../Hero.jsx";
-// import { useParams } from "react-router-dom";
+
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import HeroCare from "../Hero.jsx";
 
 // function SkinAging() {
 //   const {slug} = useParams();
@@ -141,12 +142,28 @@ const SkinAging = () => {
   };
 
   useEffect(() => {
-    fetchSkinConcern();
-  }, []);
+    const fetchProduct = async () => {
+      try {
+        const res = await fetch(`${API_URL}/skin-concerns`);
+        if (!res.ok) throw new Error("Failed to fetch products");
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p style={{ color: "red" }}>Error: {error}</p>;
-  if (!skinConcern) return null;
+        const data = await res.json();
+
+        // Find the "Skin Aging" product
+        const skinAgingProduct = data.find(
+          (item) => item.slug === "skin-aging"
+        );
+
+        setProduct(skinAgingProduct);
+      } catch (err) {
+        console.error("Error fetching skin aging product:", err);
+      }
+    };
+
+    fetchProduct();
+  }, [API_URL]);
+
+  if (!product) return <p className="text-center py-20">Loading...</p>;
 
   return (
     <div>
