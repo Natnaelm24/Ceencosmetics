@@ -1,20 +1,57 @@
-// src/components/ProductDetail/ProductTabs.jsx
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const ProductTabs = ({ product }) => {
+const ProductTabs = ({ productId }) => {
+  const [product, setProduct] = useState(null);
   const [activeTab, setActiveTab] = useState("description");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      setLoading(true);
+      try {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/Product bu ID/${productId}`);
+        console.log("Fetch response:", res);
+        if (!res.ok) {
+          let errMsg = `HTTP error ${res.status}`;
+          try {
+            const errData = await res.json();
+            errMsg += ` — ${JSON.stringify(errData)}`;
+          } catch (e) {
+            // ignore JSON parse error
+          }
+          throw new Error(errMsg);
+        }
+        const data = await res.json();
+        console.log("Fetched product data:", data);
+        setProduct(data);
+        setError(null);
+      } catch (err) {
+        console.error("Error fetching product:", err);
+        setError(err.message || "Unknown error");
+        setProduct(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProduct();
+  }, [productId]);
+
+  if (loading) return <p>Loading product…</p>;
+  if (error) return <p style={{ color: "red" }}>Error loading product: {error}</p>;
+  if (!product) return <p>No product data.</p>;
 
   const tabs = [
-    { id: "description rdddddddddddr", label: "Description" },
-    { id: "ingredients", label: "Key Ingredients" },
-    { id: "reviews", label: "Reviews (24)" },
+    { id: "description", label: "Description" },
+    { id: "key_benefits", label: "Key Benefits" },
+    { id: "application_tip", label: "How to Use" },
   ];
 
   return (
     <div className="bg-white rounded-3xl shadow-xl border border-[#e5e2d7] p-10">
-      {/* Tab Buttons */}
       <div className="flex gap-10 border-b border-[#e5e2d7] mb-8">
-        {tabs.map(tab => (
+        {tabs.map((tab) => (
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
@@ -32,20 +69,22 @@ const ProductTabs = ({ product }) => {
         ))}
       </div>
 
-      {/* Tab Content */}
       <div className="text-gray-700 leading-relaxed text-lg">
-        {activeTab === "description" && (
-          <p>{product.description || "Experience luxury redefined. Crafted with the finest ingredients and timeless elegance, this masterpiece enhances your natural beauty with effortless sophistication."}</p>
+        {activeTab === "description" && <p>{product.description}</p>}
+
+        {activeTab === "key_benefits" && (
+          <ul className="list-disc pl-5 space-y-2">
+            {(product.key_benefits || []).map((b, i) => (
+              <li key={i}>{b.benefit}</li>
+            ))}
+          </ul>
         )}
-        {activeTab === "ingredients" && (
-          <p>24K Gold Flakes • Bulgarian Rose Oil • Hyaluronic Acid • Vitamin C • Pearl Extract • Caviar Complex</p>
-        )}
-        {activeTab === "reviews" && (
-          <p className="italic">"Absolutely divine. My skin has never looked this radiant." — Sophie L.</p>
-        )}
+
+        {activeTab === "application_tip" && <p>{product.application_tip}</p>}
       </div>
     </div>
   );
 };
 
 export default ProductTabs;
+

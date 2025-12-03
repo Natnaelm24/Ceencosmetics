@@ -2,7 +2,7 @@
 import React from 'react';
 import Contactbg from '../../../assets/Image/Contactbg.jpg';
 
-export default function AboutHeroMinimal() {
+export default function Ingridients() {
   return (
     <section className="relative h-100 flex items-center justify-center">
       
@@ -21,7 +21,7 @@ export default function AboutHeroMinimal() {
       {/* Content */}
       <div className="relative z-10 text-center px-6">
         <h1 className="text-4xl md:text-5xl font-serif text-[#855d14] mb-4 tracking-tight">
-          Shop Now 
+          Ceen Ingridients
         </h1>
       </div>
 
