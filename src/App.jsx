@@ -1,5 +1,4 @@
-// src/App.jsx ← FINAL CLEAN VERSION
-import { BrowserRouter,Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./component/Header_footer/Header";
 import FooterTop from "./component/Header_footer/Footer";
 
@@ -13,16 +12,16 @@ import Testimonial from "./page/Testimonial/Testimonial";
 import ContactUs from "./page/Contact/ContactUs";
 import SkinGuides from "./page/SkinGuides/SkinGuides";
 import GuideDetail from "./page/SkinGuides/Component/GuideDetail";
-import Faq from  "./page/Faq/Faq"
+import Faq from "./page/Faq/Faq";
 
 // Skin Concern Pages
-// import SkinConcernPage from "./page/SkinCareGuides/SkinConcernPage";
+import SkinConcernPage from "./page/SkinCareGuides/SkinConcernPage";
 
 function App() {
   return (
-     <BrowserRouter>
+    <BrowserRouter>
       <Header />
-      
+
       <Routes>
         {/* Primary Pages */}
         <Route path="/" element={<Home />} />
@@ -37,11 +36,11 @@ function App() {
         <Route path="/faq" element={<Faq />} />
 
         {/* Skin Concerns */}
-        {/* <Route path="/:slug" element={<SkinConcernPage />} /> */}
+        <Route path="/concerns/:slug" element={<SkinConcernPage />} />
       </Routes>
 
       <FooterTop />
-      </BrowserRouter>
+    </BrowserRouter>
   );
 }
 
