@@ -42,10 +42,9 @@ function Dryness() {
       />
 
       {/* Content Section */}
-      <section className="py-20 bg-gradient-to-b from-white to-gray-100">
+      <section className="py-20 bg-linear-to-b from-white to-gray-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-10 items-center">
-
             {/* Text Content */}
             <div>
               <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">
@@ -61,9 +60,7 @@ function Dryness() {
 
               {product.signs && (
                 <>
-                  <h3 className="text-2xl font-semibold mt-6 mb-3">
-                    Signs
-                  </h3>
+                  <h3 className="text-2xl font-semibold mt-6 mb-3">Signs</h3>
                   <div
                     className="text-gray-700 mb-4"
                     dangerouslySetInnerHTML={{ __html: product.signs }}
@@ -73,9 +70,7 @@ function Dryness() {
 
               {product.causes && (
                 <>
-                  <h3 className="text-2xl font-semibold mt-6 mb-3">
-                    Causes
-                  </h3>
+                  <h3 className="text-2xl font-semibold mt-6 mb-3">Causes</h3>
                   <div
                     className="text-gray-700 mb-4"
                     dangerouslySetInnerHTML={{ __html: product.causes }}
@@ -98,7 +93,9 @@ function Dryness() {
               {/* Example Static Recommendation */}
               <p className="text-gray-700 mb-4">
                 <strong>CEEN Ceramide Moisturizer</strong> and{" "}
-                <strong>Hyaluronic Acid Serum</strong> are effective in restoring hydration, strengthening the skin barrier, and preventing water loss.
+                <strong>Hyaluronic Acid Serum</strong> are effective in
+                restoring hydration, strengthening the skin barrier, and
+                preventing water loss.
               </p>
             </div>
 
@@ -110,7 +107,6 @@ function Dryness() {
                 className="rounded-3xl shadow-lg object-cover w-full h-80 md:h-96 transition-transform duration-500 hover:scale-105"
               />
             </div>
-
           </div>
         </div>
       </section>
