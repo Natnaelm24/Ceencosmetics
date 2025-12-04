@@ -1,39 +1,22 @@
-import React, { Suspense, lazy } from "react";
-import { useParams } from "react-router-dom";
+const components = import.meta.glob('../page/SkinCareGuides/**/**.jsx');
 
-// Fallback component if slug does not match
-const NotFound = () => (
-  <p className="text-xl text-gray-600 text-center py-20">
-    Skin concern not found
-  </p>
-);
+export default function Concern({ slug }) {
+  const path = `../page/SkinCareGuides/${slug}/${slug}.jsx`;
+  const ComponentPromise = components[path];
 
-function SkinConcernPage() {
-  const { slug } = useParams();
+  if (!ComponentPromise) {
+    return <p className="text-center py-20 text-gray-600">Skin concern not found</p>;
+  }
 
-  // Lazy load component based on folder mapping
-  const componentMap = {
-    "dryness-and-dehydration": () => import("../page/SkinCareGuides/Drynes"),
-    "skin-aging": () => import("../page/SkinCareGuides/SkinAging"),
-    "skin-dullness": () => import("../page/SkinCareGuides/Dullnes"),
-    "uneven-skin-tone": () => import("../page/SkinCareGuides/UnevenSkinTone"),
-    "uv-protection": () => import("../page/SkinCareGuides/UvProtection"),
-  };
-
-  const LazyComponent = slug && componentMap[slug] ? lazy(componentMap[slug]) : null;
+  const Component = React.lazy(ComponentPromise);
 
   return (
-    <section className="py-16 bg-[#fdfcfb] min-h-screen">
-      <div className="max-w-6xl mx-auto px-6">
-        <Suspense fallback={<p className="text-center py-20">Loading...</p>}>
-          {LazyComponent ? <LazyComponent /> : <NotFound />}
-        </Suspense>
-      </div>
-    </section>
+    <Suspense fallback={<p className="text-center py-20">Loading...</p>}>
+      <Component />
+    </Suspense>
   );
 }
 
-export default SkinConcernPage;
 
 
 
