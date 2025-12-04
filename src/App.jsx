@@ -15,7 +15,7 @@ import GuideDetail from "./page/SkinGuides/Component/GuideDetail";
 import Faq from "./page/Faq/Faq";
 
 // Skin Concern Pages
-import SkinConcernPage from "./page/SkinCareGuides/SkinConcernPage.jsx";
+import SkinConcernPage from "./page/SkinCareGuides/SkinConcernPage";
 
 function App() {
   return (
