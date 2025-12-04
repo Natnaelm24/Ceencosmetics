@@ -36,40 +36,29 @@
 // export default Concern;
 
 
+import React, { Suspense, lazy } from "react";
 import { useParams } from "react-router-dom";
-import Dryness from "../page/SkinCareGuides/Drynes/Drynes.jsx";
-import SkinAging from "../page/SkinCareGuides/SkinAging/SkinAging.jsx";
-import Dullness from "../page/SkinCareGuides/Dullnes/Dullnes.jsx";
-import UnevenSkinTone from "../page/SkinCareGuides/UnevenSkinTone/UnevenSkinTone.jsx";
-import UVProtection from "../page/SkinCareGuides/UvProtection/UvProtection.jsx";
 
-const componentMap = {
-  "dryness-and-dehydration": Dryness,
-  "skin-aging": SkinAging,
-  "skin-dullness": Dullness,
-  "uneven-skin-tone": UnevenSkinTone,
-  "uv-protection": UVProtection,
-};
-
-function Concern() {
+function SkinConcernPage() {
   const { slug } = useParams();
-  const Component = componentMap[slug];
 
-  if (!Component) {
-    return (
-      <div className="flex items-center justify-center h-screen text-white">
-        <p className="text-xl text-gray-600">Skin concern not found</p>
-      </div>
-    );
-  }
+  // Dynamically import the component based on the slug
+  const Component = lazy(() =>
+    import(`./${slug.charAt(0).toUpperCase() + slug.slice(1).replace(/-([a-z])/g, (g) => g[1].toUpperCase())}/${slug.charAt(0).toUpperCase() + slug.slice(1).replace(/-([a-z])/g, (g) => g[1].toUpperCase())}`)
+      .catch(() => ({ default: () => <p className="text-xl text-gray-600 text-center py-20">Skin concern not found</p> }))
+  );
 
   return (
-    <article>
-      <div className="hidden lg:block h-screen" />
-      <Component />
-    </article>
+    <section className="py-16 bg-[#fdfcfb] min-h-screen">
+      <div className="max-w-6xl mx-auto px-6">
+        <Suspense fallback={<p className="text-center py-20">Loading...</p>}>
+          <Component />
+        </Suspense>
+      </div>
+    </section>
   );
 }
 
-export default Concern;
+export default SkinConcernPage;
+
 
