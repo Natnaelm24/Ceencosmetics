@@ -32,3 +32,14 @@
 // }
 
 // export default SkinConcernPage;
+import React from 'react'
+
+const SkinConcernPage = () => {
+  return (
+    <div>
+      
+    </div>
+  )
+}
+
+export default SkinConcernPage
