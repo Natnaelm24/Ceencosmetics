@@ -1,16 +1,13 @@
-// import React from "react";
 import { useParams } from "react-router-dom";
-import Dryness from "../page/SkinCareGuides/Dryness/Dryness.jsx";
-import SkinAging from "../page/SkinCareGuides/SkinAging/SkinAging.jsx";
-import Dullness from "../page/SkinCareGuides/Dullness/Dullness.jsx";
-import UnevenSkinTone from "../page/SkinCareGuides/Unevenskintone/Unevenskintone.jsx";
-import UVProtection from "../page/SkinCareGuides/Uvprotection/Uvprotection.jsx";
 
+import Dryness from "../page/SkinCareGuides/Dryness/Dryness";
+import SkinAging from "../page/SkinCareGuides/SkinAging/SkinAging";
+import Dullness from "../page/SkinCareGuides/Dullness/Dullness";
+import UnevenSkinTone from "../page/SkinCareGuides/Unevenskintone/Unevenskintone";
+import UVProtection from "../page/SkinCareGuides/Uvprotection/Uvprotection";
 
 function Concern() {
   const { slug } = useParams();
-  console.log("Slug:", slug);
-
 
   const componentMap = {
     "dryness-and-dehydration": Dryness, 
