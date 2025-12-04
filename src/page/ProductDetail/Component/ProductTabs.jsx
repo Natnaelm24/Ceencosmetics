@@ -1,45 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
-const ProductTabs = ({ productId }) => {
-  const [product, setProduct] = useState(null);
+const ProductTabs = ({ product }) => {
   const [activeTab, setActiveTab] = useState("description");
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchProduct = async () => {
-      setLoading(true);
-      try {
-        const res = await fetch(`${import.meta.env.VITE_API_URL}/products/${productId}`);
-        console.log("Fetch response:", res);
-        if (!res.ok) {
-          let errMsg = `HTTP error ${res.status}`;
-          try {
-            const errData = await res.json();
-            errMsg += ` — ${JSON.stringify(errData)}`;
-          } catch (e) {
-            // ignore JSON parse error
-          }
-          throw new Error(errMsg);
-        }
-        const data = await res.json();
-        console.log("Fetched product data:", data);
-        setProduct(data);
-        setError(null);
-      } catch (err) {
-        console.error("Error fetching product:", err);
-        setError(err.message || "Unknown error");
-        setProduct(null);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProduct();
-  }, [productId]);
-
-  if (loading) return <p>Loading product…</p>;
-  if (error) return <p style={{ color: "red" }}>Error loading product: {error}</p>;
   if (!product) return <p>No product data.</p>;
 
   const tabs = [

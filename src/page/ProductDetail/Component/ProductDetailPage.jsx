@@ -15,12 +15,9 @@ const ProductDetailPage = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await fetch(`${import.meta.env.VITE_API_URL}/products`);
-        const products = await res.json();
-
-        // Find product by string ID (exact match)
-        const found = products.find(p => p.id === id);
-        setProduct(found || null);
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/products/${id}`);
+        const product = await res.json();
+        setProduct(product || null);
       } catch (err) {
         console.error("Failed to load product:", err);
       } finally {
