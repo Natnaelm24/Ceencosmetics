@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from "react";
-import HeroCare from "../Hero.jsx";
+import HeroCare from "./Hero.jsx";
 
 function UVProtection() {
   const [product, setProduct] = useState(null);
