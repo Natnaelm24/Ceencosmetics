@@ -1,4 +1,4 @@
-// Header.jsx
+// TWO-SECTION HEADER DESIGN
 import React, { useState, useEffect } from "react";
 import { Menu, X, Globe, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -11,9 +11,11 @@ const translations = {
     products: "Products",
     testimonial: "Testimonials",
     contact: "Contact",
+
     ingredients: "Ceen Ingredient",
     concerns: "Skin Concerns",
     guides: "Guides",
+
     switchTo: "Deutsch",
   },
   DE: {
@@ -22,9 +24,11 @@ const translations = {
     products: "Produkte",
     testimonial: "Kundenstimmen",
     contact: "Kontakt",
+
     ingredients: "Inhaltsstoffe",
     concerns: "Hautprobleme",
     guides: "Ratgeber",
+
     switchTo: "English",
   },
 };
@@ -34,7 +38,9 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [language, setLanguage] = useState("EN");
   const [activeDropdown, setActiveDropdown] = useState(null);
-  const [concerns, setConcerns] = useState([]);
+  const [concerns, setConcerns] = useState([]); 
+  console.log("CONCERNS:", concerns);
+  
 
   const t = translations[language];
 
@@ -45,29 +51,37 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // FETCH SKIN CONCERNS
+  // FETCH SKIN CONCERNS (AUTOMATIC FORMAT DETECTION)
   useEffect(() => {
     const fetchConcerns = async () => {
       try {
         const url = `${import.meta.env.VITE_API_URL}/skin-concerns`;
+        console.log("API_URL:", import.meta.env.VITE_API_URL);
+        console.log("Fetching from:", url);
+
         const res = await fetch(url);
         const data = await res.json();
 
-        // Detect which field contains the array
-        const items = Array.isArray(data)
-          ? data
-          : Array.isArray(data.data)
-          ? data.data
-          : Array.isArray(data.skin_concerns)
-          ? data.skin_concerns
-          : Array.isArray(data.items)
-          ? data.items
-          : [];
+        console.log("RAW API RESPONSE:", data);
+
+        // Auto-detect list format
+        const items =
+          Array.isArray(data)
+            ? data
+            : Array.isArray(data.data)
+            ? data.data
+            : Array.isArray(data.skin_concerns)
+            ? data.skin_concerns
+            : Array.isArray(data.items)
+            ? data.items
+            : [];
 
         const list = items.map((item) => ({
           label: item.name || item.title || "Untitled",
           path: `/concerns/${item.slug || item.id || item._id || ""}`,
         }));
+
+        console.log("FINAL MAPPED LIST:", list);
 
         setConcerns(list);
       } catch (err) {
@@ -81,7 +95,7 @@ export default function Header() {
   const toggleLanguage = () =>
     setLanguage((prev) => (prev === "EN" ? "DE" : "EN"));
 
-  // PRIMARY NAVIGATION
+  // PRIMARY NAV
   const primaryNav = [
     { id: "home", name: t.home, path: "/" },
     { id: "about", name: t.about, path: "/about" },
@@ -90,11 +104,23 @@ export default function Header() {
     { id: "contact", name: t.contact, path: "/contact" },
   ];
 
-  // SECONDARY NAVIGATION
+  // SECONDARY NAV (ID INSTEAD OF NAME FOR DROPDOWN)
   const secondaryNav = [
-    { id: "ingredients", name: t.ingredients, path: "/Ceen-ingredient" },
-    { id: "concerns", name: t.concerns, dropdown: concerns },
-    { id: "guides", name: t.guides, path: "/skincare-guides" },
+    {
+      id: "ingredients",
+      name: t.ingredients,
+      path: "/Ceen-ingredient",
+    },
+    {
+      id: "concerns",
+      name: t.concerns,
+      dropdown: concerns,
+    },
+    {
+      id: "guides",
+      name: t.guides,
+      path: "/skincare-guides",
+    },
   ];
 
   return (
@@ -109,6 +135,7 @@ export default function Header() {
       <div className="border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between h-14">
+
             {/* Logo */}
             <Link
               to="/"
@@ -184,12 +211,7 @@ export default function Header() {
 
                     {activeDropdown === link.id && (
                       <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-56 bg-white shadow-lg border border-gray-100 rounded-xl py-3">
-                        {concerns.length === 0 ? (
-                          <p className="px-4 py-2 text-sm text-gray-400">
-                            Loading...
-                          </p>
-                        ) : (
-                          concerns.map((item, idx) => (
+                          {concerns.map((item, idx) => (
                             <Link
                               key={idx}
                               to={item.path}
@@ -197,8 +219,7 @@ export default function Header() {
                             >
                               {item.label}
                             </Link>
-                          ))
-                        )}
+                          ))}
                       </div>
                     )}
                   </>
@@ -227,6 +248,7 @@ export default function Header() {
         } bg-white border-t border-gray-100`}
       >
         <div className="px-4 py-6">
+
           {/* Primary Mobile */}
           <div className="mb-8">
             <h3 className="text-xs text-gray-500 font-semibold uppercase px-4 mb-4">
