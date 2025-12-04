@@ -1,6 +1,6 @@
 // import React from "react";
 import { useParams } from "react-router-dom";
-import Dryness from "../page/SkinCareGuides/Dryness/dryness";
+// import Dryness from "../page/SkinCareGuides/Dryness/dryness";
 import SkinAging from "../page/SkinCareGuides/SkinAging/SkinAging";
 import Dullness from "../page/SkinCareGuides/Dullness/Dullness";
 import UnevenSkinTone from "../page/SkinCareGuides/Unevenskintone/Unevenskintone";
@@ -13,7 +13,7 @@ function Concern() {
 
 
   const componentMap = {
-    "dryness-and-dehydration": Dryness, 
+    // "dryness-and-dehydration": Dryness, 
     "skin-aging": SkinAging,
     "skin-dullness": Dullness,
     "uneven-skin-tone": UnevenSkinTone,
