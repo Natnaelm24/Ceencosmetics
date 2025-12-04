@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 
-import Dryness from "./Dryness/Dryness";
+import Dryness from "./Dryness/dryness";
 import SkinAging from "./SkinAging/SkinAging";
 import Dullness from "./Dullness/Dullness";
 import Unevenskintone from "./Unevenskintone/Unevenskintone";

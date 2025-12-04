@@ -1,16 +1,11 @@
 // import React from "react";
 import { useParams } from "react-router-dom";
-import Dryness from "../page/SkinCareGuides/Dryness/Dryness";
+import Dryness from "../page/SkinCareGuides/Dryness/dryness";
 import SkinAging from "../page/SkinCareGuides/SkinAging/SkinAging";
 import Dullness from "../page/SkinCareGuides/Dullness/Dullness";
 import UnevenSkinTone from "../page/SkinCareGuides/Unevenskintone/Unevenskintone";
 import UVProtection from "../page/SkinCareGuides/Uvprotection/Uvprotection";
 
-// import Dryness from "./Dryness/Dryness";
-// import SkinAging from "./SkinAging/SkinAging";
-// import Dullness from "./Dullness/Dullness";
-// import Unevenskintone from "./Unevenskintone/Unevenskintone";
-// import Uvprotection from "./Uvprotection/Uvprotection";
 
 function Concern() {
   const { slug } = useParams();
