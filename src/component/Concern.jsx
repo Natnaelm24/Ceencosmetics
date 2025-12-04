@@ -2,7 +2,7 @@ import React, { Suspense, lazy } from "react";
 
 const componentMap = {
   "dryness-and-dehydration": lazy(() =>
-    import("../page/SkinCareGuides/Dryness_temp.jsx")
+    import("../page/SkinCareGuides/Dryness.jsx")
   ),
   "skin-aging": lazy(() =>
     import("../page/SkinCareGuides/SkinAging.jsx")
