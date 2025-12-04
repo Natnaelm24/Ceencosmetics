@@ -37,7 +37,7 @@ function App() {
         <Route path="/faq" element={<Faq />} />
 
         {/* Skin Concerns */}
-        <Route path="/:slug" element={<SkinConcernPage />} />
+        {/* <Route path="/:slug" element={<SkinConcernPage />} /> */}
       </Routes>
 
       <FooterTop />
