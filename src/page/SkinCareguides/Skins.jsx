@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom";
 import Dryness from "./Dryness/Dryness";
 import SkinAging from "./SkinAging/SkinAging";
 import Dullness from "./Dullness/Dullness";
-import Unevenskintone from "./Unevenskintone/Unevenskintone";
-import Uvprotection from "./Uvprotection/Uvprotection";
+import Unevenskintone from "./UnevenSkinTone/UnevenSkinTone";
+import Uvprotection from "./UvProtection/UvProtection";
 
 export default function Skins() {
   const { slug } = useParams();
