@@ -37,29 +37,23 @@
 
 
 import { useParams } from "react-router-dom";
+import Dryness from "../page/SkinCareGuides/Drynes/Drynes.jsx";
+import SkinAging from "../page/SkinCareGuides/SkinAging/SkinAging.jsx";
+import Dullness from "../page/SkinCareGuides/Dullnes/Dullnes.jsx";
+import UnevenSkinTone from "../page/SkinCareGuides/UnevenSkinTone/UnevenSkinTone.jsx";
+import UVProtection from "../page/SkinCareGuides/UvProtection/UvProtection.jsx";
+
+const componentMap = {
+  "dryness-and-dehydration": Dryness,
+  "skin-aging": SkinAging,
+  "skin-dullness": Dullness,
+  "uneven-skin-tone": UnevenSkinTone,
+  "uv-protection": UVProtection,
+};
 
 function Concern() {
   const { slug } = useParams();
-
-  // Function to select component based on slug
-  const getComponent = (slug) => {
-    switch (slug) {
-      case "dryness-and-dehydration":
-        return require("../page/SkinCareGuides/Drynes/Drynes.jsx").default;
-      case "skin-aging":
-        return require("../page/SkinCareGuides/SkinAging/SkinAging.jsx").default;
-      case "skin-dullness":
-        return require("../page/SkinCareGuides/Dullnes/Dullnes.jsx").default;
-      case "uneven-skin-tone":
-        return require("../page/SkinCareGuides/UnevenSkinTone/UnevenSkinTone.jsx").default;
-      case "uv-protection":
-        return require("../page/SkinCareGuides/UvProtection/UvProtection.jsx").default;
-      default:
-        return null;
-    }
-  };
-
-  const Component = getComponent(slug);
+  const Component = componentMap[slug];
 
   if (!Component) {
     return (
@@ -78,3 +72,4 @@ function Concern() {
 }
 
 export default Concern;
+
