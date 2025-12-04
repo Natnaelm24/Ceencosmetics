@@ -2,11 +2,11 @@
 import React, { Suspense, lazy } from "react";
 
 const componentMap = {
-  "dryness-and-dehydration": lazy(() => import("../page/SkinCareGuides/Dryness/Dryness")),
-  "skin-aging": lazy(() => import("../page/SkinCareGuides/SkinAging/SkinAging")),
+  "dryness-and-dehydration": lazy(() => import("../page/SkinCareGuides/Drynes")),
+  "skin-aging": lazy(() => import("../page/SkinCareGuides/SkinAging")),
   "skin-dullness": lazy(() => import("../page/SkinCareGuides/Dullness/Dullness")),
-  "uneven-skin-tone": lazy(() => import("../page/SkinCareGuides/Unevenskintone/Unevenskintone")),
-  "uv-protection": lazy(() => import("../page/SkinCareGuides/Uvprotection/Uvprotection")),
+  "uneven-skin-tone": lazy(() => import("../page/SkinCareGuides/UnevenSkinTone")),
+  "uv-protection": lazy(() => import("../page/SkinCareGuides/UvProtection")),
 };
 
 export default function Concern({ slug }) {
