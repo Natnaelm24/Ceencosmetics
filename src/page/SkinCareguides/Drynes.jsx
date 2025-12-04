@@ -1,8 +1,7 @@
-
 import React, { useState, useEffect } from "react";
-import HeroCare from "../Hero.jsx";
+import HeroCare from "./Hero.jsx";
 
-function UnevenSkinTone() {
+function Dryness() {
   const [product, setProduct] = useState(null);
   const API_URL = import.meta.env.VITE_API_URL;
 
@@ -14,14 +13,14 @@ function UnevenSkinTone() {
 
         const data = await res.json();
 
-        // Find the product related to "Uneven Skin Tone"
-        const toneProduct = data.find(
-          (item) => item.slug === "uneven-skin-tone"
+        // Find the product related to "Dryness & Dehydration"
+        const drynessProduct = data.find(
+          (item) => item.slug === "dryness-and-dehydration"
         );
 
-        setProduct(toneProduct);
+        setProduct(drynessProduct);
       } catch (err) {
-        console.error("Error fetching uneven skin tone product:", err);
+        console.error("Error fetching dryness product:", err);
       }
     };
 
@@ -29,7 +28,7 @@ function UnevenSkinTone() {
   }, [API_URL]);
 
   if (!product)
-    return <p className="text-center py-20">Loading product data...</p>;
+    return <p className="text-center py-20">Loading dryness data...</p>;
 
   return (
     <div>
@@ -43,10 +42,9 @@ function UnevenSkinTone() {
       />
 
       {/* Content Section */}
-      <section className="py-20 bg-gradient-to-b from-white to-gray-100">
+      <section className="py-20 bg-linear-to-b from-white to-gray-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-10 items-center">
-
             {/* Text Content */}
             <div>
               <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">
@@ -62,9 +60,7 @@ function UnevenSkinTone() {
 
               {product.signs && (
                 <>
-                  <h3 className="text-2xl font-semibold mt-6 mb-3">
-                    Signs
-                  </h3>
+                  <h3 className="text-2xl font-semibold mt-6 mb-3">Signs</h3>
                   <div
                     className="text-gray-700 mb-4"
                     dangerouslySetInnerHTML={{ __html: product.signs }}
@@ -74,9 +70,7 @@ function UnevenSkinTone() {
 
               {product.causes && (
                 <>
-                  <h3 className="text-2xl font-semibold mt-6 mb-3">
-                    Causes
-                  </h3>
+                  <h3 className="text-2xl font-semibold mt-6 mb-3">Causes</h3>
                   <div
                     className="text-gray-700 mb-4"
                     dangerouslySetInnerHTML={{ __html: product.causes }}
@@ -98,9 +92,10 @@ function UnevenSkinTone() {
 
               {/* Example Static Recommendation */}
               <p className="text-gray-700 mb-4">
-                Recommended products: <strong>CEEN SPF 50</strong>,{" "}
-                <strong>Vitamin C Serum</strong>, <strong>Retinol Serum</strong>,{" "}
-                and <strong>Hyaluronic Acid</strong> for a complete skin tone routine.
+                <strong>CEEN Ceramide Moisturizer</strong> and{" "}
+                <strong>Hyaluronic Acid Serum</strong> are effective in
+                restoring hydration, strengthening the skin barrier, and
+                preventing water loss.
               </p>
             </div>
 
@@ -112,7 +107,6 @@ function UnevenSkinTone() {
                 className="rounded-3xl shadow-lg object-cover w-full h-80 md:h-96 transition-transform duration-500 hover:scale-105"
               />
             </div>
-
           </div>
         </div>
       </section>
@@ -120,4 +114,4 @@ function UnevenSkinTone() {
   );
 }
 
-export default UnevenSkinTone;
+export default Dryness;

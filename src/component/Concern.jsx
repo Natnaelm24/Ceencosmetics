@@ -13,11 +13,11 @@ function SkinConcernPage() {
 
   // Lazy load component based on folder mapping
   const componentMap = {
-    "dryness-and-dehydration": () => import("../page/SkinCareGuides/Dullnes/Dullnes"),
-    "skin-aging": () => import("../page/SkinCareGuides/SkinAging/SkinAging"),
-    "skin-dullness": () => import("../page/SkinCareGuides/Drynes/Drynes"),
-    "uneven-skin-tone": () => import("../page/SkinCareGuides/UnevenSkinTone/UnevenSkinTone"),
-    "uv-protection": () => import("../page/SkinCareGuides/UvProtection/UvProtection"),
+    "dryness-and-dehydration": () => import("../page/SkinCareGuides/Drynes"),
+    "skin-aging": () => import("../page/SkinCareGuides/SkinAging"),
+    "skin-dullness": () => import("../page/SkinCareGuides/Dullnes"),
+    "uneven-skin-tone": () => import("../page/SkinCareGuides/UnevenSkinTone"),
+    "uv-protection": () => import("../page/SkinCareGuides/UvProtection"),
   };
 
   const LazyComponent = slug && componentMap[slug] ? lazy(componentMap[slug]) : null;

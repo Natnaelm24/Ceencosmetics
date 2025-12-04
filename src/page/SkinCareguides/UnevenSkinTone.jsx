@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
-import HeroCare from "../Hero.jsx";
 
-function Dullness() {
+import React, { useState, useEffect } from "react";
+import HeroCare from "./Hero.jsx";
+
+function UnevenSkinTone() {
   const [product, setProduct] = useState(null);
   const API_URL = import.meta.env.VITE_API_URL;
 
@@ -13,14 +14,14 @@ function Dullness() {
 
         const data = await res.json();
 
-        // Find the product related to "Skin Dullness"
-        const dullnessProduct = data.find(
-          (item) => item.slug === "skin-dullness"
+        // Find the product related to "Uneven Skin Tone"
+        const toneProduct = data.find(
+          (item) => item.slug === "uneven-skin-tone"
         );
 
-        setProduct(dullnessProduct);
+        setProduct(toneProduct);
       } catch (err) {
-        console.error("Error fetching dullness product:", err);
+        console.error("Error fetching uneven skin tone product:", err);
       }
     };
 
@@ -97,8 +98,9 @@ function Dullness() {
 
               {/* Example Static Recommendation */}
               <p className="text-gray-700 mb-4">
-                Recommended products: <strong>Vitamin C Serum</strong> and{" "}
-                <strong>Hyaluronic Acid Serum</strong> to improve skin tone, texture, and radiance.
+                Recommended products: <strong>CEEN SPF 50</strong>,{" "}
+                <strong>Vitamin C Serum</strong>, <strong>Retinol Serum</strong>,{" "}
+                and <strong>Hyaluronic Acid</strong> for a complete skin tone routine.
               </p>
             </div>
 
@@ -118,4 +120,4 @@ function Dullness() {
   );
 }
 
-export default Dullness;
+export default UnevenSkinTone;
