@@ -40,7 +40,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 
-// Import components based on your actual folder/file names
+// Import components correctly (matching your folder structure)
 import Dryness from "./Dryness/Dryness";
 import SkinAging from "./SkinAging/SkinAging";
 import Dullness from "./Dullness/Dullness";
@@ -74,3 +74,4 @@ function SkinConcernPage() {
 }
 
 export default SkinConcernPage;
+
