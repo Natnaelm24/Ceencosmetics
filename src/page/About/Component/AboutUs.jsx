@@ -1,34 +1,36 @@
 // import React from "react";
-import { FaLeaf, FaFlask, FaShieldAlt, FaHandsHelping, FaUsers } from "react-icons/fa";
+// import { FaLeaf, FaFlask, FaShieldAlt, FaHandsHelping, FaUsers } from "react-icons/fa";
+import { Leaf, Flask, Shield, Users } from "lucide-react";
+
 
 function AboutUs() {
   const features = [
     {
-      icon: <FaLeaf className="text-[#855d14] w-6 h-6" />,
+      icon: <Leaf className="text-[#855d14] w-6 h-6" />,
       title: "We believe",
       description:
         "Beauty is more than skin deep; it is about trust, care, and authenticity. Founded with the belief that skin care should be both effective and ethical, we create products that respect your skin and the planet.",
     },
     {
-      icon: <FaFlask className="text-[#855d14] w-6 h-6" />,
+      icon: <Flask className="text-[#855d14] w-6 h-6" />,
       title: "Our philosophy",
       description:
         "We blend science with nature, using proven ingredients like hyaluronic acid, retinol, vitamin C, coenzyme Q10, and ceramides to support healthy, radiant skin. Each formula is thoughtfully designed to deliver visible results without compromise.",
     },
     {
-      icon: <FaShieldAlt className="text-[#855d14] w-6 h-6" />,
+      icon: <ShieldAlt className="text-[#855d14] w-6 h-6" />,
       title: "Transparency first",
       description:
         "Ingredient lists are clear, certifications matter, and we proudly uphold EU standards for safety and quality. Vegan, cruelty-free, and dermatologically tested — because you deserve skin care you can believe in.",
     },
     {
-      icon: <FaHandsHelping className="text-[#855d14] w-6 h-6" />,
+      icon: <HandsHelping className="text-[#855d14] w-6 h-6" />,
       title: "Our promise",
       description:
         "We’re committed to empowering you with knowledge. From ingredient spotlights to honest product stories, we want you to feel confident in every choice you make with us.",
     },
     {
-      icon: <FaUsers className="text-[#855d14] w-6 h-6" />,
+      icon: <Users className="text-[#855d14] w-6 h-6" />,
       title: "Community",
       description:
         "CEEN is more than a cosmetics brand — it’s a community built on elegance, integrity, and care. Together, we’re redefining beauty with transparency and trust.",
