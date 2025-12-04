@@ -1,26 +1,21 @@
+import React, { Suspense } from "react";
 import { useParams } from "react-router-dom";
-
-import Dryness from "../page/SkinCareGuides/Dryness/Dryness";
-import SkinAging from "../page/SkinCareGuides/SkinAging/SkinAging";
-import Dullness from "../page/SkinCareGuides/Dullness/Dullness";
-import UnevenSkinTone from "../page/SkinCareGuides/Unevenskintone/Unevenskintone";
-import UVProtection from "../page/SkinCareGuides/Uvprotection/Uvprotection";
 
 function Concern() {
   const { slug } = useParams();
 
-  // Map slugs to components
-  const componentMap = {
-    "dryness-and-dehydration": Dryness,
-    "skin-aging": SkinAging,
-    "skin-dullness": Dullness,
-    "uneven-skin-tone": UnevenSkinTone,
-    "uv-protection": UVProtection,
+  // Convert slug to component path
+  const componentPathMap = {
+    "dryness-and-dehydration": "Dryness/Dryness",
+    "skin-aging": "SkinAging/SkinAging",
+    "skin-dullness": "Dullness/Dullness",
+    "uneven-skin-tone": "Unevenskintone/Unevenskintone",
+    "uv-protection": "Uvprotection/Uvprotection",
   };
 
-  const Component = componentMap[slug];
+  const path = componentPathMap[slug];
 
-  if (!Component) {
+  if (!path) {
     return (
       <div className="flex items-center justify-center h-screen text-white">
         <p className="text-xl text-gray-600">Skin concern not found</p>
@@ -28,13 +23,15 @@ function Concern() {
     );
   }
 
-  return (
-    <article>
-      <div className="hidden lg:block h-screen" />
+  // Dynamic import of the component
+  const Component = React.lazy(() => import(`../page/SkinCareGuides/${path}.jsx`));
 
+  return (
+    <Suspense fallback={<div className="flex items-center justify-center h-screen text-white">Loading...</div>}>
       <Component />
-    </article>
+    </Suspense>
   );
 }
 
 export default Concern;
+
