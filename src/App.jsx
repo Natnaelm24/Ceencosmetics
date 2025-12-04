@@ -13,7 +13,7 @@ import ContactUs from "./page/Contact/ContactUs";
 import SkinGuides from "./page/SkinGuides/SkinGuides";
 import GuideDetail from "./page/SkinGuides/Component/GuideDetail";
 import Faq from "./page/Faq/Faq";
-import Skins from "./page/SkinCareGuides/Skins";
+import Concern from "./component/Concern";
 
 
 
@@ -36,7 +36,7 @@ function App() {
         <Route path="/faq" element={<Faq />} />
 
         {/* Skin Concerns */}
-        <Route path="/concerns/:slug" element={<Skins />} />
+        <Route path="/concerns/:slug" element={<Concern />} />
       </Routes>
 
       <FooterTop />
