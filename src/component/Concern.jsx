@@ -38,9 +38,9 @@
 
 import { useParams } from "react-router-dom";
 
-import Dryness from "../page/SkinCareGuides/Dryness/Dryness.jsx";
+import Dryness from "../page/SkinCareGuides/Drynes/Drynes.jsx";
 import SkinAging from "../page/SkinCareGuides/SkinAging/SkinAging.jsx";
-import Dullness from "../page/SkinCareGuides/Dullness/Dullness.jsx";
+import Dullness from "../page/SkinCareGuides/Dullnes/Dullnes.jsx";
 import UnevenSkinTone from "../page/SkinCareGuides/UnevenSkinTone/UnevenSkinTone.jsx";
 import UVProtection from "../page/SkinCareGuides/UvProtection/UvProtection.jsx";
 
