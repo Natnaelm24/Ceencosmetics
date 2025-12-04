@@ -13,7 +13,7 @@ import ContactUs from "./page/Contact/ContactUs";
 import SkinGuides from "./page/SkinGuides/SkinGuides";
 import GuideDetail from "./page/SkinGuides/Component/GuideDetail";
 import Faq from "./page/Faq/Faq";
-
+import SkinsConcern from "./page/SkinConcerns/SkinConcerns";
 
 
 
