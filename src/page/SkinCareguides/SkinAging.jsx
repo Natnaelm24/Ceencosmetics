@@ -1,45 +1,9 @@
+import React, { useState, useEffect } from "react";
+import HeroCare from "./Hero.jsx";
 
-
-
-
-import React, { useEffect, useState } from "react";
-
-const API_URL = "https://ceen.risegmbh.com/api"; // Your base API URL
-const SLUG = "skin-aging"; 
-
-const SkinAging = () => {
-  const [skinConcern, setSkinConcern] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  // Fetch skin concerns and filter by slug
-  const fetchSkinConcern = async () => {
-    setLoading(true);
-    setError(null);
-
-    try {
-      const response = await fetch(`${API_URL}/skin-concerns`);
-      if (!response.ok) {
-        throw new Error(`API request failed with status ${response.status}`);
-      }
-
-      const data = await response.json();
-
-      // Find the specific skin concern by slug
-      const item = data.find((sc) => sc.slug === SLUG);
-
-      if (!item) {
-        throw new Error("Skin concern not found.");
-      }
-
-      setSkinConcern(item);
-    } catch (err) {
-      console.error(err);
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
+function SkinAging() {
+  const [product, setProduct] = useState(null);
+  const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -49,7 +13,6 @@ const SkinAging = () => {
 
         const data = await res.json();
 
-        // Find the "Skin Aging" product
         const skinAgingProduct = data.find(
           (item) => item.slug === "skin-aging"
         );
@@ -63,33 +26,44 @@ const SkinAging = () => {
     fetchProduct();
   }, [API_URL]);
 
-  if (!product) return <p className="text-center py-20">Loading...</p>;
+  if (!product)
+    return <p className="text-center py-20">Loading...</p>;
 
   return (
     <div>
-      <h1>{skinConcern.title}</h1>
-      <p>{skinConcern.description}</p>
+      <HeroCare
+        title={product.title}
+        backgroundImage={product.image_url[0] || "/default-hero.jpg"}
+      />
 
-      <h2>Signs</h2>
-      <div dangerouslySetInnerHTML={{ __html: skinConcern.signs }} />
+      <section className="py-20 bg-gradient-to-b from-white to-gray-100">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-4xl font-bold mb-6">{product.title}</h2>
 
-      <h2>Causes</h2>
-      <div dangerouslySetInnerHTML={{ __html: skinConcern.causes }} />
+          <div
+            className="text-gray-700 mb-4"
+            dangerouslySetInnerHTML={{ __html: product.description }}
+          />
 
-      <h2>Treatments</h2>
-      <div dangerouslySetInnerHTML={{ __html: skinConcern.treatments }} />
+          <h3 className="text-2xl font-semibold mt-6 mb-3">Signs</h3>
+          <div dangerouslySetInnerHTML={{ __html: product.signs }} />
 
-      {skinConcern.image_url && skinConcern.image_url.length > 0 && (
-        <div>
-          <h2>Images</h2>
-          {skinConcern.image_url.map((url, index) => (
-            <img key={index} src={url} alt={skinConcern.title} style={{ maxWidth: "300px", margin: "10px" }} />
-          ))}
+          <h3 className="text-2xl font-semibold mt-6 mb-3">Causes</h3>
+          <div dangerouslySetInnerHTML={{ __html: product.causes }} />
+
+          <h3 className="text-2xl font-semibold mt-6 mb-3">Treatments</h3>
+          <div dangerouslySetInnerHTML={{ __html: product.treatments }} />
+
+          <img
+            src={product.image_url[0]}
+            alt={product.title}
+            className="rounded-2xl mt-6 shadow-lg"
+          />
         </div>
-      )}
+      </section>
     </div>
   );
-};
+}
 
 export default SkinAging;
 

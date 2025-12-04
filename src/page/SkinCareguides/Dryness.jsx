@@ -13,7 +13,6 @@ function Dryness() {
 
         const data = await res.json();
 
-        // Find the product related to "Dryness & Dehydration"
         const drynessProduct = data.find(
           (item) => item.slug === "dryness-and-dehydration"
         );
@@ -32,7 +31,6 @@ function Dryness() {
 
   return (
     <div>
-      {/* Hero Section */}
       <HeroCare
         title={product.title}
         backgroundImage={product.image_url[0] || "/default-hero.jpg"}
@@ -41,11 +39,10 @@ function Dryness() {
         bottomGlowColor="bg-blue-200/20"
       />
 
-      {/* Content Section */}
       <section className="py-20 bg-linear-to-b from-white to-gray-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-10 items-center">
-            {/* Text Content */}
+
             <div>
               <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">
                 {product.title}
@@ -89,24 +86,16 @@ function Dryness() {
                   />
                 </>
               )}
-
-              {/* Example Static Recommendation */}
-              <p className="text-gray-700 mb-4">
-                <strong>CEEN Ceramide Moisturizer</strong> and{" "}
-                <strong>Hyaluronic Acid Serum</strong> are effective in
-                restoring hydration, strengthening the skin barrier, and
-                preventing water loss.
-              </p>
             </div>
 
-            {/* Image */}
             <div className="flex justify-center md:justify-end">
               <img
                 src={product.image_url[0] || "/default-product.jpg"}
                 alt={product.title}
-                className="rounded-3xl shadow-lg object-cover w-full h-80 md:h-96 transition-transform duration-500 hover:scale-105"
+                className="rounded-3xl shadow-lg object-cover w-full h-80 md:h-96"
               />
             </div>
+
           </div>
         </div>
       </section>
@@ -115,3 +104,4 @@ function Dryness() {
 }
 
 export default Dryness;
+
