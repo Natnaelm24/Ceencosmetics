@@ -96,7 +96,7 @@ export default function Header() {
     },
     {
       name: t.guides,
-      path: "/skincare-guides",
+      path: "/guides",
     },
   ];
 
