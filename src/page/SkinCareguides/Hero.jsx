@@ -20,7 +20,7 @@ export default function HeroCare({
         />
 
         {/* Overlay */}
-        <div className={`absolute inset-0 bg-gradient-to-b ${overlayColor}`} />
+        <div className={`absolute inset-0 bg-linear-to-b ${overlayColor}`} />
       </div>
 
       {/* Content */}

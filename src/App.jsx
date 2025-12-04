@@ -13,9 +13,10 @@ import ContactUs from "./page/Contact/ContactUs";
 import SkinGuides from "./page/SkinGuides/SkinGuides";
 import GuideDetail from "./page/SkinGuides/Component/GuideDetail";
 import Faq from "./page/Faq/Faq";
+import SkinConcern from "./page/SkinCareGuides/SkinConcern";
 
 // Skin Concern Pages
-import SkinConcern from "./page/SkinCareGuides/SkinConcern";
+// import SkinConcern from "./page/SkinCareGuides/SkinConcern";
 
 function App() {
   return (
