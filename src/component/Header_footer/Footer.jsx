@@ -2,11 +2,6 @@ import React from "react";
 import logo from "../../assets/Logo/logo.png";
 import { Link } from "react-router-dom";
 
-import visa from "../../assets/card/visa.png";
-import mastercard from "../../assets/card/master.png";
-import paypal from "../../assets/card/paypal.png";
-import applepay from "../../assets/card/apple-pay.png";
-
 import {
   Facebook,
   Instagram,
@@ -15,9 +10,9 @@ import {
   Mail,
   Phone,
   MapPin,
-  Truck,
-  RefreshCw,
-  Shield,
+  Gift,
+ Headphones,
+  Star,
 } from "lucide-react";
 
 function Footer() {
@@ -27,31 +22,34 @@ function Footer() {
       <div className="bg-[#855d14] py-6">
         <div className="container mx-auto flex flex-col md:flex-row justify-around items-center text-center space-y-4 md:space-y-0">
           <div className="flex items-center space-x-3">
-            <Truck className="text-white" size={28} />
+            <Gift className="text-white" size={28} />
             <div>
-              <h4 className="font-semibold text-white">Free Shipping</h4>
-              <p className="text-white text-sm">On orders over $50</p>
+              <h4 className="font-semibold text-white">Special Gifts</h4>
+              <p className="text-white text-sm">
+                Free with purchase
+              </p>
             </div>
           </div>
 
           <div className="flex items-center space-x-3">
-            <RefreshCw className="text-white" size={28} />
+            <Headphones className="text-white" size={28} />
             <div>
-              <h4 className="font-semibold text-white">30-Day Returns</h4>
-              <p className="text-white text-sm">Money-back guarantee</p>
+              <h4 className="font-semibold text-white">24/7 Support</h4>
+              <p className="text-white text-sm">Always here</p>
             </div>
           </div>
 
           <div className="flex items-center space-x-3">
-            <Shield className="text-white" size={28} />
+            <Star className="text-white" size={28} />
             <div>
-              <h4 className="font-semibold text-white">Secure Payment</h4>
-              <p className="text-white text-sm">100% secure checkout</p>
+              <h4 className="font-semibold text-white">Top Quality</h4>
+              <p className="text-white text-sm">
+                Premium products
+              </p>
             </div>
           </div>
         </div>
       </div>
-
       {/* Main Footer Content */}
       <div className="container mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {/* Logo & Social */}
@@ -110,7 +108,7 @@ function Footer() {
               { name: "Our Product", href: "/product" },
               { name: "Privacy Policy", href: "#" },
               { name: "Terms of Service", href: "#" },
-              { name: "FAQ", href: "#" },
+              { name: "FAQ", href: "/faq" },
             ].map((link) => (
               <li key={link.name}>
                 <a
@@ -157,16 +155,10 @@ function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-[#855d14]">
-        <div className="container mx-auto px-4 py-2 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-black text-lg mb-4 md:mb-0">
+        <div className="container mx-auto px-4 py-2 flex justify-center items-center">
+          <p className="text-black text-lg">
             © 2024 CEEN. All rights reserved.
           </p>
-          <div className="flex space-x-5 text-">
-            <img src={paypal} alt="PayPal" className="h-13" />
-            <img src={mastercard} alt="Mastercard" className="h-10" />
-            <img src={visa} alt="Visa" className="h-10" />
-            <img src={applepay} alt="Apple Pay" className="h-10" />
-          </div>
         </div>
       </div>
     </footer>

@@ -17,15 +17,11 @@ export default function OurHistoryWithImage() {
                 alt="CEEN Founder crafting the first serum in Paris"
                 className="w-full h-auto object-cover"
               />
-
-              {/* Elegant warm overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
             </div>
 
-            {/* Soft Warm Decorative Glows */}
             <div className="absolute -top-8 -left-8 w-48 h-48 bg-[#e5e2d7]/50 rounded-full blur-3xl" />
             <div className="absolute -bottom-12 -right-12 w-64 h-64 bg-[#e5e2d7]/40 rounded-full blur-3xl" />
-
           </div>
 
           {/* RIGHT: Text */}
@@ -43,7 +39,7 @@ export default function OurHistoryWithImage() {
               <p>In 2019, Amara Chen asked one question in Paris:</p>
 
               <p className="italic text-2xl text-gray-800 font-medium">
-                “Why can’t clean beauty feel this luxurious?”
+                “Why can’t clean beauty feel this luxurious?” 
               </p>
 
               <p>
@@ -60,22 +56,6 @@ export default function OurHistoryWithImage() {
                 brings.
               </p>
             </div>
-
-            {/* Stats */}
-            <div className="mt-12 flex flex-col sm:flex-row gap-8 justify-center lg:justify-start">
-              <div className="text-center">
-                <div className="text-4xl font-bold text-[#855d14]">2019</div>
-                <p className="text-sm text-gray-600 mt-1">Founded in Paris</p>
-              </div>
-
-              <div className="text-center">
-                <div className="text-4xl font-bold text-[#855d14]">50,000+</div>
-                <p className="text-sm text-gray-600 mt-1">
-                  Radiant Souls Worldwide
-                </p>
-              </div>
-            </div>
-
             {/* Quote */}
             <blockquote className="mt-16 text-2xl md:text-3xl font-light italic text-gray-800 max-w-xl mx-auto lg:mx-0">
               “I wanted to create something that makes women feel truly seen.”
@@ -91,3 +71,4 @@ export default function OurHistoryWithImage() {
     </section>
   );
 }
+
