@@ -40,7 +40,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 
-// Import components correctly (matching your folder structure)
 import Dryness from "./Dryness/Dryness";
 import SkinAging from "./SkinAging/SkinAging";
 import Dullness from "./Dullness/Dullness";
@@ -51,7 +50,7 @@ function SkinConcernPage() {
   const { slug } = useParams();
   console.log("Slug:", slug);
 
-  // Map URL slugs to components
+
   const componentMap = {
     "dryness-and-dehydration": Dryness,
     "skin-aging": SkinAging,
