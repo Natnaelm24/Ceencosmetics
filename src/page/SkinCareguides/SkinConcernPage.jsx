@@ -37,7 +37,7 @@
 
 
 
-import React from "react";
+// import React from "react";
 import { useParams } from "react-router-dom";
 
 import Dryness from "./Dryness/Dryness";
