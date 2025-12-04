@@ -6,7 +6,7 @@ import Dullness from "./Dullness/Dullness";
 import Unevenskintone from "./Unevenskintone/Unevenskintone";
 import Uvprotection from "./Uvprotection/Uvprotection";
 
-function Skins() {
+export default function Skins() {
   const { slug } = useParams();
   console.log("Slug:", slug);
 
@@ -32,4 +32,3 @@ function Skins() {
   return <Component />;
 }
 
-export default Skins;
