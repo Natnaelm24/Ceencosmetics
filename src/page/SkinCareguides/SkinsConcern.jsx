@@ -46,7 +46,7 @@ import Dullness from "./Dullness/Dullness";
 import Unevenskintone from "./Unevenskintone/Unevenskintone";
 import Uvprotection from "./Uvprotection/Uvprotection";
 
-function SkinConcern() {
+function SkinsConcern() {
   const { slug } = useParams();
   console.log("Slug:", slug);
 
@@ -72,5 +72,5 @@ function SkinConcern() {
   return <Component />;
 }
 
-export default SkinConcern;
+export default SkinsConcern;
 
