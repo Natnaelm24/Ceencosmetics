@@ -9,8 +9,9 @@ import UVProtection from "../page/SkinCareGuides/Uvprotection/Uvprotection";
 function Concern() {
   const { slug } = useParams();
 
+  // Map slugs to components
   const componentMap = {
-    "dryness-and-dehydration": Dryness, 
+    "dryness-and-dehydration": Dryness,
     "skin-aging": SkinAging,
     "skin-dullness": Dullness,
     "uneven-skin-tone": UnevenSkinTone,
@@ -21,13 +22,19 @@ function Concern() {
 
   if (!Component) {
     return (
-      <div className="text-center py-20">
+      <div className="flex items-center justify-center h-screen text-white">
         <p className="text-xl text-gray-600">Skin concern not found</p>
       </div>
     );
   }
 
-  return <Component />;
+  return (
+    <article>
+      <div className="hidden lg:block h-screen" />
+
+      <Component />
+    </article>
+  );
 }
 
 export default Concern;
