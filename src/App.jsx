@@ -15,7 +15,7 @@ import GuideDetail from "./page/SkinGuides/Component/GuideDetail";
 import Faq from "./page/Faq/Faq";
 
 // Skin Concern Pages
-import SkinConcernPage from "./page/SkinCareGuides/SkinConcernPage";
+import SkinConcern from "./page/SkinCareGuides/SkinConcern";
 
 function App() {
   return (
@@ -36,7 +36,7 @@ function App() {
         <Route path="/faq" element={<Faq />} />
 
         {/* Skin Concerns */}
-        <Route path="/concerns/:slug" element={<SkinConcernPage />} />
+        <Route path="/concerns/:slug" element={<SkinConcern />} />
       </Routes>
 
       <FooterTop />
