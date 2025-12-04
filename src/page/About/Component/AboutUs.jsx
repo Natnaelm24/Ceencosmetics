@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import { FaLeaf, FaFlask, FaShieldAlt, FaHandsHelping, FaUsers } from "react-icons/fa";
 
 function AboutUs() {

@@ -1,5 +1,5 @@
 // src/components/OurHistoryWithImage.jsx
-import React from "react";
+// import React from "react";
 import about_img_1 from "../../../assets/Image/about_img_1.jpeg";
 
 export default function OurHistoryWithImage() {
