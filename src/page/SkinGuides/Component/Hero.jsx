@@ -1,7 +1,7 @@
 // src/components/AboutHeroMinimal.jsx
 import React from 'react';
 
-export default function HeroCare({
+function HeroCare({
   title = "CEEN Product",
   backgroundImage,
   overlayColor = "from-[#e5e2d7]/80 via-[#e5e2d7]/60 to-[#e5e2d7]/80",
@@ -36,3 +36,4 @@ export default function HeroCare({
     </section>
   );
 }
+export default HeroCare ;

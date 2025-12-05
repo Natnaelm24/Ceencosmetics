@@ -1,6 +1,7 @@
+// src/page/SkinGuides/GuideDetail.jsx
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import HeroCare from "../Component/Hero";
+import HeroCare from "./Hero";
 
 export default function GuideDetail() {
   const { slug } = useParams();
@@ -12,24 +13,16 @@ export default function GuideDetail() {
     const fetchGuide = async () => {
       try {
         const res = await fetch(`${import.meta.env.VITE_API_URL}/skin-care-guides`);
-        if (!res.ok) {
-          setError("Failed to load guides.");
-          return;
-        }
+        if (!res.ok) throw new Error("Failed to load guides.");
 
         const data = await res.json();
 
-        // Match guide based on slug
-        const foundGuide = data.find((item) => {
-          if (slug === "morning") return item.title.toLowerCase().includes("skin care guide");
-          if (slug === "evening") return item.title.toLowerCase().includes("evening");
-          return false;
-        });
+        const found = data.find((g) => g.slug === slug);
 
-        if (!foundGuide) {
+        if (!found) {
           setError("Guide not found.");
         } else {
-          setGuide(foundGuide);
+          setGuide(found);
         }
       } catch (err) {
         console.error(err);
@@ -60,30 +53,29 @@ export default function GuideDetail() {
     <>
       <HeroCare
         title={guide.title}
-        backgroundImage={guide.image_url?.[0] || "/images/guide-hero.jpg"}
+        backgroundImage={"/images/guide-hero.jpg"}
         overlayColor="from-black/80 via-black/40 to-black/80"
       />
 
       <section className="py-20 bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-4xl mx-auto px-6">
 
-          {/* Title */}
           <h1 className="text-5xl font-extrabold text-gray-900 mb-8 text-center leading-tight">
             {guide.title}
           </h1>
 
-          {/* Description */}
           <p className="text-lg text-gray-700 leading-relaxed whitespace-pre-line mb-14 text-center max-w-3xl mx-auto">
             {guide.description}
           </p>
 
-          {/* Steps */}
           <div className="space-y-10">
             {guide.steps?.map((stepObj, index) => {
               const lines = stepObj.details.split("\n");
 
               const getValue = (key) => {
-                const line = lines.find((l) => l.toLowerCase().startsWith(key.toLowerCase()));
+                const line = lines.find((l) =>
+                  l.toLowerCase().startsWith(key.toLowerCase())
+                );
                 if (!line) return null;
                 return line.split("-")[1]?.trim() || null;
               };
@@ -104,8 +96,7 @@ export default function GuideDetail() {
                   <div className="space-y-3 text-gray-700">
                     {goal && (
                       <p>
-                        <strong className="font-semibold text-gray-900">Goal:</strong>{" "}
-                        {goal}
+                        <strong className="font-semibold text-gray-900">Goal:</strong> {goal}
                       </p>
                     )}
 
@@ -113,8 +104,7 @@ export default function GuideDetail() {
                       <p>
                         <strong className="font-semibold text-gray-900">
                           Key Ingredients:
-                        </strong>{" "}
-                        {ingredients}
+                        </strong> {ingredients}
                       </p>
                     )}
 
@@ -122,8 +112,7 @@ export default function GuideDetail() {
                       <p>
                         <strong className="font-semibold text-gray-900">
                           How to Apply:
-                        </strong>{" "}
-                        {howToApply}
+                        </strong> {howToApply}
                       </p>
                     )}
                   </div>
@@ -132,7 +121,6 @@ export default function GuideDetail() {
             })}
           </div>
 
-          {/* Back Button */}
           <div className="mt-20 text-center">
             <Link
               to="/guides"
@@ -141,6 +129,7 @@ export default function GuideDetail() {
               ← Back to All Guides
             </Link>
           </div>
+
         </div>
       </section>
     </>

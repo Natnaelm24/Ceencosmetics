@@ -1,7 +1,7 @@
 // src/page/SkinGuides/SkinGuides.jsx
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import HeroCare from "./Component/Hero"; 
+import HeroCare from "./Component/Hero";
 
 export default function SkinGuides() {
   const [guides, setGuides] = useState([]);
@@ -12,12 +12,12 @@ export default function SkinGuides() {
     const fetchGuides = async () => {
       try {
         const res = await fetch(`${import.meta.env.VITE_API_URL}/skin-care-guides`);
-        if (!res.ok) throw new Error("Failed to load guides");
+        if (!res.ok) throw new Error("Failed to load guides.");
 
         const data = await res.json();
-        setGuides(data);
+        setGuides(Array.isArray(data) ? data : []);
       } catch (err) {
-        console.error(err);
+        console.error("API Error:", err);
         setError("Could not load skin care guides. Please try again later.");
       } finally {
         setLoading(false);
@@ -29,7 +29,6 @@ export default function SkinGuides() {
 
   return (
     <>
-      {/* Hero Section */}
       <HeroCare
         title="Skin Care Guides"
         backgroundImage="/images/guides-hero.jpg"
@@ -38,7 +37,7 @@ export default function SkinGuides() {
 
       <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
+          
           {/* Header */}
           <div className="text-center mb-16">
             <h1 className="text-5xl md:text-6xl font-bold text-primary mb-6">
@@ -49,14 +48,14 @@ export default function SkinGuides() {
             </p>
           </div>
 
-          {/* Loading State */}
+          {/* Loading */}
           {loading && (
             <div className="text-center py-20">
               <p className="text-2xl text-gray-500">Loading guides...</p>
             </div>
           )}
 
-          {/* Error State */}
+          {/* Error */}
           {error && (
             <div className="text-center py-20">
               <p className="text-xl text-red-600">{error}</p>
@@ -73,53 +72,38 @@ export default function SkinGuides() {
           {/* Guides Grid */}
           {!loading && guides.length > 0 && (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              
-              {guides.map((guide) => {
-                const shortSlug = guide.title.includes("Evening")
-                  ? "evening"
-                  : "morning";
+              {guides.map((guide) => (
+                <Link
+                  key={guide.id}
+                  to={`/guides/${guide.slug}`}
+                  className="group block bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+                >
+                  
+                  {/* Placeholder Image */}
+                  <div className="h-56 bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center">
+                    <span className="text-5xl text-gray-300">Skin</span>
+                  </div>
 
-                return (
-                  <Link
-                    key={guide.id}
-                    to={`/guides/${shortSlug}`}    // ✅ FIXED: using short slug
-                    className="group block bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
-                  >
-                    {/* Image */}
-                    <div className="h-56 overflow-hidden bg-gray-100">
-                      {guide.image_url?.[0] ? (
-                        <img
-                          src={guide.image_url[0]}
-                          alt={guide.title}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                        />
-                      ) : (
-                        <div className="w-full h-full bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center">
-                          <span className="text-5xl text-gray-300">Skin</span>
-                        </div>
-                      )}
-                    </div>
+                  {/* Content */}
+                  <div className="p-8">
+                    <h3 className="text-2xl font-bold text-gray-800 mb-3 group-hover:text-primary transition">
+                      {guide.title}
+                    </h3>
 
-                    {/* Content */}
-                    <div className="p-8">
-                      <h3 className="text-2xl font-bold text-gray-800 mb-3 group-hover:text-primary transition">
-                        {guide.title}
-                      </h3>
+                    <p className="text-gray-600 line-clamp-3">
+                      {guide.description?.substring(0, 120)}...
+                    </p>
 
-                      <p className="text-gray-600 line-clamp-3">
-                        {guide.description?.replace(/<[^>]*>/g, "").substring(0, 120)}...
-                      </p>
+                    <span className="inline-block mt-6 text-primary font-semibold group-hover:translate-x-2 transition">
+                      Read Guide →
+                    </span>
+                  </div>
 
-                      <span className="inline-block mt-6 text-primary font-semibold group-hover:translate-x-2 transition">
-                        Read Guide →
-                      </span>
-                    </div>
-                  </Link>
-                );
-              })}
-
+                </Link>
+              ))}
             </div>
           )}
+
         </div>
       </section>
     </>
