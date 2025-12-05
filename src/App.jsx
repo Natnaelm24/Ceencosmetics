@@ -37,6 +37,7 @@ function App() {
 
         
         <Route path="/concerns/:slug" element={<Concern />} />
+
       </Routes>
 
       <FooterTop />

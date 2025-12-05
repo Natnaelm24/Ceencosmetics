@@ -1,37 +1,22 @@
-import React, { Suspense, lazy } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import ConcernDetail from "../page/SkinCareGuides/Detail";
+// import ConcernDetail from "../components/ConcernDetail";
 
-const componentMap = {
-  "dryness-and-dehydration": lazy(() =>
-    import("../page/SkinCareGuides/Dryness.jsx")
-  ),
-  "skin-aging": lazy(() =>
-    import("../page/SkinCareGuides/SkinAging.jsx")
-  ),
-  "skin-dullness": lazy(() =>
-    import("../page/SkinCareGuides/Dullness.jsx")
-  ),
-  "uneven-skin-tone": lazy(() =>
-    import("../page/SkinCareGuides/UnevenSkinTone.jsx")
-  ),
-  "uv-protection": lazy(() =>
-    import("../page/SkinCareGuides/UvProtection.jsx")
-  ),
-};
+export default function Concern() {
+  const { slug } = useParams();
+  const API_URL = import.meta.env.VITE_API_URL;
+  const [data, setData] = useState(null);
 
-export default function Concern({ slug }) {
-  const Component = componentMap[slug];
+  useEffect(() => {
+    const fetchDetail = async () => {
+      const res = await fetch(`${API_URL}/skin-concerns/${slug}`);
+      const json = await res.json();
+      setData(json.singlepost);
+    };
 
-  if (!Component) {
-    return (
-      <p className="text-center py-20 text-gray-600">
-        Skin concern not found
-      </p>
-    );
-  }
+    fetchDetail();
+  }, [slug]);
 
-  return (
-    <Suspense fallback={<p className="text-center py-20">Loading...</p>}>
-      <Component />
-    </Suspense>
-  );
+  return <ConcernDetail data={data} />;
 }

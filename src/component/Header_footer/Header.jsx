@@ -77,8 +77,8 @@ export default function Header() {
             : [];
 
         const list = items.map((item) => ({
-          label: item.name || item.title || "Untitled",
-          path: `/concerns/${item.slug || item.id || item._id || ""}`,
+          label: item.slug  || "Untitled",
+          path: `/concerns/${item.slug }`,
         }));
 
         console.log("FINAL MAPPED LIST:", list);
